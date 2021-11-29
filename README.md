@@ -5,7 +5,7 @@ Runs a one-off task on AWS ECS Fargate.
 Usage
 ``` yaml
 - name: Run migration
-  uses: noelzubin/aws-ces-run-task@1.0
+  uses: noelzubin/aws-ecs-run-task@1.0
   with:
     cluster: staging
     task-defintion: run_migration_task_def
@@ -13,7 +13,7 @@ Usage
     security-groups: sg-1231231
 
 - name: Run more Migrations
-  uses: noelzubin/aws-ces-run-task@1.0
+  uses: noelzubin/aws-ecs-run-task@1.0
   with:
     cluster: staging
     task-defintion: server_backend_task_def
