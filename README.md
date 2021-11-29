@@ -7,22 +7,22 @@ Usage
 - name: Run migration
   uses: noelzubin/aws-ces-run-task@1.0
   with:
-	cluster: staging
-	task-defintion: run_migration_task_def
-	subnets: sb-123123
-	security-groups: sg-1231231
+    cluster: staging
+    task-defintion: run_migration_task_def
+    subnets: sb-123123
+    security-groups: sg-1231231
 
 - name: Run more Migrations
   uses: noelzubin/aws-ces-run-task@1.0
   with:
-	cluster: staging
-	task-defintion: server_backend_task_def
-	subnets: sb-123123
-	security-groups: sg-1231231
-	container-override: server
-	container-command: sh
-	-c
-	cd database && python migrate.py
+    cluster: staging
+    task-defintion: server_backend_task_def
+    subnets: sb-123123
+    security-groups: sg-1231231
+    container-override: server
+    container-command: sh
+        -c
+        cd database && python migrate.py
 ```
 
 See [aciton.yml](action.yml) file for the full documentation for this action's inputs and outputs.
