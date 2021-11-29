@@ -11,6 +11,16 @@ const main = async () => {
     required: true,
   });
 
+  const overrideContainer = core.getInput("override-container", {
+    required: false,
+  });
+  const overrideContainerCommand = core.getMultilineInput(
+    "override-container-command",
+    {
+      required: false,
+    }
+  );
+
   const taskParams = {
     taskDefinition,
     cluster,
@@ -26,6 +36,29 @@ const main = async () => {
   };
 
   try {
+    if (overrideContainerCommand.length > 0 && !overrideContainer) {
+      throw new Error(
+        "override-container is required when override-container-command is set"
+      );
+    }
+
+    if (overrideContainer) {
+      if (overrideContainerCommand) {
+        taskParams.overrides = {
+          containerOverrides: [
+            {
+              name: overrideContainer,
+              command: overrideContainerCommand,
+            },
+          ],
+        };
+      } else {
+        throw new Error(
+          "override-container-command is required when override-container is set"
+        );
+      }
+    }
+
     core.debug("Running task...");
     let task = await ecs.runTask(taskParams).promise();
     const taskArn = task.tasks[0].taskArn;

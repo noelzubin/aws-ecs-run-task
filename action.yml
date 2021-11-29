@@ -16,6 +16,12 @@ inputs:
   security-groups:
     description: 'The list of Security Groups'
     required: true
+  override-container:
+    description: 'The container whose command should be overridden'
+    required: false
+  override-container-command:
+    description: 'The command to to be run on the overrided container'
+    required: false
 outputs:
   task-arn:
     description: 'The ARN for the tash that finished running'
