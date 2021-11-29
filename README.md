@@ -9,9 +9,22 @@ Usage
   with:
 	cluster: staging
 	task-defintion: run_migration_task_def
-	subnets: ${{ secrets.SUBNETS }}
-	security-groups: ${{ secrets.SECURITY_GROUPS }}
+	subnets: sb-123123
+	security-groups: sg-1231231
+
+- name: Run more Migrations
+  uses: noelzubin/aws-ces-run-task@1.0
+  with:
+	cluster: staging
+	task-defintion: server_backend_task_def
+	subnets: sb-123123
+	security-groups: sg-1231231
+	container-override: server
+	container-command: sh
+	-c
+	cd database && python migrate.py
 ```
+
 See [aciton.yml](action.yml) file for the full documentation for this action's inputs and outputs.
 
 Note: the `task-definition` input requires the name of the task-defintion. If you need to use task-definition input files, consider creating other actions to create the task defintion first.  
