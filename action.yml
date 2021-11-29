@@ -1,0 +1,23 @@
+name: 'Run one-off task on ECS'
+description: 'Run a task on ECS and waits for ECS task to finish.'
+inputs:
+  cluster:
+    description: "The name of the ECS service's cluster.  Will default to the 'default' cluster"
+    required: false
+  task-definition:
+    description: 'The name of the task-definition'
+    required: true
+  subnets:
+    description: 'The list of subnets'
+    required: true
+  security-groups:
+    description: 'The list of Security Groups'
+    required: true
+outputs:
+  task-arn:
+    description: 'The ARN for the tash that finished running'
+  status:
+    description: 'The status of the task, success for sucesssful tasks.'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
