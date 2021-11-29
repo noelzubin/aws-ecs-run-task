@@ -1,5 +1,8 @@
 name: 'Run one-off task on ECS'
 description: 'Run a task on ECS and waits for ECS task to finish.'
+branding:
+  icon: 'activity'
+  color: 'white'
 inputs:
   cluster:
     description: "The name of the ECS service's cluster.  Will default to the 'default' cluster"
