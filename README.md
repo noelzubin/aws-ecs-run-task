@@ -20,7 +20,8 @@ Usage
     subnets: sb-123123
     security-groups: sg-1231231
     container-override: server
-    container-command: sh
+    container-command: |
+        sh
         -c
         cd database && python migrate.py
 ```
