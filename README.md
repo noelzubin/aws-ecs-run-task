@@ -11,6 +11,7 @@ Usage
     task-defintion: run_migration_task_def
     subnets: sb-123123
     security-groups: sg-1231231
+    public-ip: ENABLED
 
 - name: Run more Migrations
   uses: noelzubin/aws-ecs-run-task@1.0
@@ -19,6 +20,7 @@ Usage
     task-defintion: server_backend_task_def
     subnets: sb-123123
     security-groups: sg-1231231
+    public-ip: DISABLED
     container-override: server
     container-command: |
         sh

@@ -16,6 +16,9 @@ inputs:
   security-groups:
     description: 'The list of Security Groups'
     required: true
+  public-ip:
+    description: 'Whether to assign public IP is ENABLED/DISABLED to the task'
+    required: true
   override-container:
     description: 'The container whose command should be overridden'
     required: false

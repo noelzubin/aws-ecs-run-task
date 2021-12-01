@@ -10,6 +10,9 @@ const main = async () => {
   const securityGroups = core.getMultilineInput("security-groups", {
     required: true,
   });
+  const assignPublicIp = core.getInput("public-ip", {
+    required: true,
+  });
 
   const overrideContainer = core.getInput("override-container", {
     required: false,
@@ -29,7 +32,7 @@ const main = async () => {
     networkConfiguration: {
       awsvpcConfiguration: {
         subnets,
-        assignPublicIp: "ENABLED",
+        assignPublicIp: assignPublicIp,
         securityGroups,
       },
     },
