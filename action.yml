@@ -22,6 +22,11 @@ inputs:
   override-container-command:
     description: 'The command to to be run on the overrided container'
     required: false
+  assign-public-ip:
+    description: 'Assign public IP to the task. (ENABLED/DISABLED)'
+    required: false
+    default: 'ENABLED'
+
 outputs:
   task-arn:
     description: 'The ARN for the tash that finished running'
