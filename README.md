@@ -19,9 +19,10 @@ Usage
     task-defintion: server_backend_task_def
     subnets: sb-123123
     security-groups: sg-1231231
-    container-override: server
     assign-public-ip: DISABLED
-    container-command: sh
+    container-override: server
+    container-command: |
+        sh
         -c
         cd database && python migrate.py
 ```
