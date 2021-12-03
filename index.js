@@ -67,9 +67,7 @@ const main = async () => {
     core.setOutput("task-arn", taskArn);
 
     core.debug("Waiting for task to finish...");
-    await ecs
-      .waitFor("tasksStopped", { cluster: "staging", tasks: [taskArn] })
-      .promise();
+    await ecs.waitFor("tasksStopped", { cluster, tasks: [taskArn] }).promise();
 
     core.debug("Checking status of task");
     task = await ecs.describeTasks({ cluster, tasks: [taskArn] }).promise();
