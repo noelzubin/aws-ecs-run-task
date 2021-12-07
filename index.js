@@ -23,6 +23,8 @@ const main = async () => {
     }
   );
 
+  const waitForTask = core.getBooleanInput("wait-task-to-finish", {required: false})
+
   const taskParams = {
     taskDefinition,
     cluster,
@@ -65,6 +67,11 @@ const main = async () => {
     let task = await ecs.runTask(taskParams).promise();
     const taskArn = task.tasks[0].taskArn;
     core.setOutput("task-arn", taskArn);
+
+    if (waitForTask === false) {
+      core.setOutput("status", "success");
+      return;
+    }
 
     core.debug("Waiting for task to finish...");
     await ecs.waitFor("tasksStopped", { cluster, tasks: [taskArn] }).promise();
