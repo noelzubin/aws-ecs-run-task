@@ -26,6 +26,10 @@ inputs:
     description: 'Assign public IP to the task. (ENABLED/DISABLED)'
     required: false
     default: 'ENABLED'
+  wait-task-to-finish:
+    description: 'Wait for the task to finish before returning'
+    required: false
+    default: 'true'
 
 outputs:
   task-arn:
